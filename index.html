@@ -1,0 +1,1163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demark Jade T. Roga - Programmer & Gamer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            cursor: none;
+        }
+
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;600;700&family=Exo+2:wght@300;400;500;600;700&display=swap');
+
+        body {
+            font-family: 'Rajdhani', 'Exo 2', sans-serif;
+            background: linear-gradient(45deg, #0a0a0a, #1a1a2e, #16213e);
+            color: white;
+            overflow: hidden;
+            height: 100vh;
+        }
+
+        /* Custom Cursor */
+        .cursor {
+            position: fixed;
+            width: 20px;
+            height: 20px;
+            background: radial-gradient(circle, #ff0080, #00ff80, #8000ff);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+            mix-blend-mode: difference;
+            animation: cursorPulse 2s infinite;
+            transition: transform 0.1s ease;
+        }
+
+        .cursor-trail {
+            position: fixed;
+            width: 6px;
+            height: 6px;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9998;
+        }
+
+        @keyframes cursorPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.5); }
+        }
+
+        /* Header */
+        header {
+            padding: 2rem;
+            text-align: center;
+            background: linear-gradient(135deg, rgba(10, 10, 20, 0.95), rgba(30, 30, 50, 0.9), rgba(20, 20, 40, 0.95));
+            backdrop-filter: blur(20px);
+            border-bottom: 2px solid rgba(255, 0, 128, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg, 
+                rgba(255, 0, 128, 0.1) 0%, 
+                rgba(0, 255, 128, 0.1) 25%, 
+                rgba(128, 0, 255, 0.1) 50%, 
+                rgba(255, 128, 0, 0.1) 75%, 
+                rgba(255, 0, 128, 0.1) 100%);
+            animation: headerGlow 4s ease-in-out infinite;
+            z-index: -1;
+        }
+
+        @keyframes headerGlow {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.6; }
+        }
+
+        .gaming-setup {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .peripheral {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .mouse-icon {
+            width: 40px;
+            height: 60px;
+            background: linear-gradient(145deg, #1a1a2e, #0f0f1a);
+            border-radius: 20px 20px 15px 15px;
+            border: 2px solid #ff0080;
+            position: relative;
+            animation: mouseGlow 3s ease-in-out infinite;
+            box-shadow: 0 0 20px rgba(255, 0, 128, 0.4);
+        }
+
+        .mouse-icon::before {
+            content: '';
+            position: absolute;
+            top: 8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 12px;
+            background: linear-gradient(to bottom, #00ff80, #ff0080);
+            border-radius: 2px;
+            animation: scrollWheel 2s ease-in-out infinite;
+        }
+
+        .mouse-icon::after {
+            content: '';
+            position: absolute;
+            bottom: 8px;
+            left: 8px;
+            right: 8px;
+            height: 15px;
+            background: linear-gradient(45deg, rgba(255, 0, 128, 0.2), rgba(0, 255, 128, 0.2));
+            border-radius: 8px;
+            animation: mouseLed 2.5s ease-in-out infinite;
+        }
+
+        @keyframes mouseGlow {
+            0%, 100% { 
+                border-color: #ff0080; 
+                box-shadow: 0 0 20px rgba(255, 0, 128, 0.4);
+            }
+            33% { 
+                border-color: #00ff80; 
+                box-shadow: 0 0 20px rgba(0, 255, 128, 0.4);
+            }
+            66% { 
+                border-color: #8000ff; 
+                box-shadow: 0 0 20px rgba(128, 0, 255, 0.4);
+            }
+        }
+
+        @keyframes scrollWheel {
+            0%, 100% { opacity: 1; transform: translateX(-50%) translateY(0); }
+            50% { opacity: 0.5; transform: translateX(-50%) translateY(-3px); }
+        }
+
+        @keyframes mouseLed {
+            0%, 100% { background: linear-gradient(45deg, rgba(255, 0, 128, 0.2), rgba(0, 255, 128, 0.2)); }
+            50% { background: linear-gradient(45deg, rgba(0, 255, 128, 0.3), rgba(128, 0, 255, 0.3)); }
+        }
+
+        .keyboard-icon {
+            width: 80px;
+            height: 25px;
+            background: linear-gradient(145deg, #1a1a2e, #0f0f1a);
+            border-radius: 8px;
+            border: 2px solid #00ff80;
+            position: relative;
+            animation: keyboardGlow 3s ease-in-out infinite;
+            box-shadow: 0 0 20px rgba(0, 255, 128, 0.4);
+        }
+
+        .keyboard-icon::before {
+            content: '';
+            position: absolute;
+            top: 4px;
+            left: 6px;
+            right: 6px;
+            height: 3px;
+            background: linear-gradient(90deg, #ff0080, #00ff80, #8000ff, #ff8000);
+            background-size: 200% 100%;
+            border-radius: 2px;
+            animation: keyboardRgb 2s linear infinite;
+        }
+
+        .keyboard-icon::after {
+            content: '';
+            position: absolute;
+            bottom: 4px;
+            left: 6px;
+            right: 6px;
+            height: 8px;
+            background: repeating-linear-gradient(
+                90deg,
+                rgba(255, 255, 255, 0.1) 0px,
+                rgba(255, 255, 255, 0.1) 3px,
+                transparent 3px,
+                transparent 6px
+            );
+            border-radius: 2px;
+        }
+
+        @keyframes keyboardGlow {
+            0%, 100% { 
+                border-color: #00ff80; 
+                box-shadow: 0 0 20px rgba(0, 255, 128, 0.4);
+            }
+            33% { 
+                border-color: #8000ff; 
+                box-shadow: 0 0 20px rgba(128, 0, 255, 0.4);
+            }
+            66% { 
+                border-color: #ff8000; 
+                box-shadow: 0 0 20px rgba(255, 128, 0, 0.4);
+            }
+        }
+
+        @keyframes keyboardRgb {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 200% 50%; }
+        }
+
+        .peripheral-label {
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.1rem;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.7);
+            animation: labelPulse 3s ease-in-out infinite;
+        }
+
+        @keyframes labelPulse {
+            0%, 100% { opacity: 0.7; }
+            50% { opacity: 1; }
+        }
+
+        .logo {
+            font-family: 'Orbitron', monospace;
+            font-size: 3rem;
+            font-weight: 900;
+            letter-spacing: 0.2rem;
+            background: linear-gradient(45deg, #ff0080, #00ff80, #8000ff, #ff8000);
+            background-size: 400% 400%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradientShift 3s ease-in-out infinite;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 0 30px rgba(255, 255, 255, 0.1);
+        }
+
+        .tagline {
+            font-family: 'Exo 2', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 300;
+            letter-spacing: 0.1rem;
+            opacity: 0.8;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .tagline::before {
+            content: '⚡';
+            margin-right: 0.5rem;
+            color: #ff0080;
+            animation: sparkle 2s ease-in-out infinite;
+        }
+
+        .tagline::after {
+            content: '⚡';
+            margin-left: 0.5rem;
+            color: #00ff80;
+            animation: sparkle 2s ease-in-out infinite reverse;
+        }
+
+        @keyframes sparkle {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.2); }
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        /* Navigation */
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .nav-btn {
+            font-family: 'Rajdhani', sans-serif;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 25px;
+            font-size: 1rem;
+            font-weight: 600;
+            letter-spacing: 0.05rem;
+            text-transform: uppercase;
+            color: white;
+            background: linear-gradient(45deg, #ff0080, #00ff80);
+            background-size: 200% 200%;
+            animation: buttonFloat 3s ease-in-out infinite, rgbShift 2s linear infinite;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 0, 128, 0.3);
+        }
+
+        .nav-btn:nth-child(2) {
+            background: linear-gradient(45deg, #00ff80, #8000ff);
+            animation-delay: -0.5s;
+            box-shadow: 0 4px 15px rgba(0, 255, 128, 0.3);
+        }
+
+        .nav-btn:nth-child(3) {
+            background: linear-gradient(45deg, #8000ff, #ff8000);
+            animation-delay: -1s;
+            box-shadow: 0 4px 15px rgba(128, 0, 255, 0.3);
+        }
+
+        .nav-btn:nth-child(4) {
+            background: linear-gradient(45deg, #ff8000, #ff0080);
+            animation-delay: -1.5s;
+            box-shadow: 0 4px 15px rgba(255, 128, 0, 0.3);
+        }
+
+        .nav-btn:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 8px 25px rgba(255, 255, 255, 0.2);
+        }
+
+        @keyframes buttonFloat {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        @keyframes rgbShift {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 200% 50%; }
+        }
+
+        /* Main Content */
+        main {
+            height: calc(100vh - 200px);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .page {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            opacity: 0;
+            transform: translateX(100%) rotateY(45deg) scale(0.8);
+            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            filter: blur(10px);
+            transform-style: preserve-3d;
+            perspective: 1000px;
+        }
+
+        .page.active {
+            opacity: 1;
+            transform: translateX(0) rotateY(0deg) scale(1);
+            filter: blur(0px);
+            animation: pageSlideIn 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .page.exiting {
+            opacity: 0;
+            transform: translateX(-100%) rotateY(-45deg) scale(0.8);
+            filter: blur(10px);
+            animation: pageSlideOut 0.8s cubic-bezier(0.55, 0.06, 0.68, 0.19);
+        }
+
+        @keyframes pageSlideIn {
+            0% {
+                opacity: 0;
+                transform: translateX(100%) rotateY(45deg) scale(0.8);
+                filter: blur(10px);
+            }
+            50% {
+                opacity: 0.5;
+                transform: translateX(20%) rotateY(15deg) scale(0.9);
+                filter: blur(5px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateX(0) rotateY(0deg) scale(1);
+                filter: blur(0px);
+            }
+        }
+
+        @keyframes pageSlideOut {
+            0% {
+                opacity: 1;
+                transform: translateX(0) rotateY(0deg) scale(1);
+                filter: blur(0px);
+            }
+            50% {
+                opacity: 0.5;
+                transform: translateX(-20%) rotateY(-15deg) scale(0.9);
+                filter: blur(5px);
+            }
+            100% {
+                opacity: 0;
+                transform: translateX(-100%) rotateY(-45deg) scale(0.8);
+                filter: blur(10px);
+            }
+        }
+
+        .section {
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            animation: sectionGlow 4s ease-in-out infinite;
+            height: 100%;
+            overflow-y: auto;
+        }
+
+        @keyframes sectionGlow {
+            0%, 100% { box-shadow: 0 0 20px rgba(255, 0, 128, 0.1); }
+            33% { box-shadow: 0 0 20px rgba(0, 255, 128, 0.1); }
+            66% { box-shadow: 0 0 20px rgba(128, 0, 255, 0.1); }
+        }
+
+        .section h2 {
+            font-family: 'Orbitron', monospace;
+            font-size: 2.5rem;
+            font-weight: 700;
+            letter-spacing: 0.1rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #ff0080, #00ff80, #8000ff);
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradientShift 3s ease-in-out infinite;
+        }
+
+        /* Skills Grid */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .skill-card {
+            padding: 1.5rem;
+            background: linear-gradient(135deg, rgba(255, 0, 128, 0.1), rgba(0, 255, 128, 0.1));
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+            animation: cardFloat 4s ease-in-out infinite;
+        }
+
+        .skill-card:nth-child(even) {
+            animation-delay: -2s;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            background: linear-gradient(135deg, rgba(255, 0, 128, 0.2), rgba(0, 255, 128, 0.2));
+        }
+
+        @keyframes cardFloat {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-5px); }
+        }
+
+        /* Projects */
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .project-card {
+            padding: 2rem;
+            background: linear-gradient(135deg, rgba(128, 0, 255, 0.1), rgba(255, 128, 0, 0.1));
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+            animation: projectPulse 5s ease-in-out infinite;
+        }
+
+        .project-card:nth-child(2) {
+            animation-delay: -1.5s;
+        }
+
+        .project-card:nth-child(3) {
+            animation-delay: -3s;
+        }
+
+        .project-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.1);
+        }
+
+        @keyframes projectPulse {
+            0%, 100% { box-shadow: 0 0 15px rgba(128, 0, 255, 0.2); }
+            50% { box-shadow: 0 0 25px rgba(255, 128, 0, 0.3); }
+        }
+
+        /* Gaming Stats */
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .stat-box {
+            text-align: center;
+            padding: 1.5rem;
+            background: linear-gradient(45deg, rgba(255, 0, 128, 0.1), rgba(0, 255, 128, 0.1), rgba(128, 0, 255, 0.1));
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            animation: statGlow 3s ease-in-out infinite;
+        }
+
+        .stat-box:nth-child(2) { animation-delay: -1s; }
+        .stat-box:nth-child(3) { animation-delay: -2s; }
+
+        @keyframes statGlow {
+            0%, 100% { transform: scale(1); box-shadow: 0 0 10px rgba(255, 0, 128, 0.2); }
+            50% { transform: scale(1.02); box-shadow: 0 0 20px rgba(0, 255, 128, 0.3); }
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, #ff0080, #00ff80, #8000ff);
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradientShift 2s ease-in-out infinite;
+        }
+
+        /* Contact Buttons */
+        .contact-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .contact-btn {
+            font-family: 'Rajdhani', sans-serif;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            letter-spacing: 0.05rem;
+            text-transform: uppercase;
+            color: white;
+            background: linear-gradient(45deg, #ff0080, #00ff80, #8000ff, #ff8000);
+            background-size: 300% 300%;
+            animation: contactFloat 4s ease-in-out infinite, contactRgb 3s linear infinite;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(255, 0, 128, 0.3);
+        }
+
+        .contact-btn:nth-child(2) {
+            animation-delay: -1s;
+        }
+
+        .contact-btn:nth-child(3) {
+            animation-delay: -2s;
+        }
+
+        .contact-btn:hover {
+            transform: translateY(-8px) scale(1.1);
+            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.3);
+        }
+
+        @keyframes contactFloat {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            25% { transform: translateY(-8px) rotate(1deg); }
+            75% { transform: translateY(-4px) rotate(-1deg); }
+        }
+
+        @keyframes contactRgb {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 300% 50%; }
+        }
+
+        /* Gaming Footer */
+        .gaming-footer {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 60px;
+            background: linear-gradient(90deg, rgba(0, 0, 0, 0.8), rgba(20, 20, 40, 0.9), rgba(0, 0, 0, 0.8));
+            backdrop-filter: blur(15px);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 2rem;
+            z-index: 100;
+        }
+
+        .rgb-bars {
+            display: flex;
+            gap: 4px;
+            align-items: center;
+        }
+
+        .rgb-bar {
+            width: 3px;
+            height: 30px;
+            background: linear-gradient(to top, #ff0080, #00ff80, #8000ff);
+            border-radius: 2px;
+            animation: rgbBarPulse 1.5s ease-in-out infinite;
+        }
+
+        .rgb-bar:nth-child(1) { animation-delay: 0s; height: 25px; }
+        .rgb-bar:nth-child(2) { animation-delay: 0.2s; height: 35px; }
+        .rgb-bar:nth-child(3) { animation-delay: 0.4s; height: 20px; }
+        .rgb-bar:nth-child(4) { animation-delay: 0.6s; height: 40px; }
+        .rgb-bar:nth-child(5) { animation-delay: 0.8s; height: 28px; }
+
+        @keyframes rgbBarPulse {
+            0%, 100% { 
+                opacity: 0.6; 
+                transform: scaleY(0.8);
+                box-shadow: 0 0 5px rgba(255, 0, 128, 0.3);
+            }
+            50% { 
+                opacity: 1; 
+                transform: scaleY(1.2);
+                box-shadow: 0 0 15px rgba(0, 255, 128, 0.6);
+            }
+        }
+
+        .gaming-elements {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            font-family: 'Rajdhani', sans-serif;
+            font-weight: 600;
+            font-size: 0.9rem;
+            letter-spacing: 0.05rem;
+        }
+
+        .power-indicator {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .power-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #00ff80;
+            animation: powerPulse 2s ease-in-out infinite;
+            box-shadow: 0 0 10px #00ff80;
+        }
+
+        @keyframes powerPulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.3); }
+        }
+
+        .fps-counter {
+            color: #ff0080;
+            text-shadow: 0 0 10px rgba(255, 0, 128, 0.5);
+            animation: fpsFlicker 3s ease-in-out infinite;
+        }
+
+        @keyframes fpsFlicker {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+        }
+
+        .ping-display {
+            color: #8000ff;
+            text-shadow: 0 0 10px rgba(128, 0, 255, 0.5);
+            animation: pingBlink 2.5s ease-in-out infinite;
+        }
+
+        @keyframes pingBlink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        /* Adjust page content to accommodate footer */
+        .page .section {
+            height: calc(100% - 60px);
+            margin-bottom: 60px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .logo { font-size: 2rem; }
+            .section h2 { font-size: 2rem; }
+            nav { flex-direction: column; align-items: center; }
+            .contact-buttons { flex-direction: column; align-items: center; }
+            
+            .gaming-footer {
+                padding: 0 1rem;
+            }
+            
+            .gaming-elements {
+                gap: 1rem;
+                font-size: 0.8rem;
+            }
+            
+            .rgb-bars {
+                gap: 2px;
+            }
+            
+            .rgb-bar {
+                width: 2px;
+                height: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="cursor"></div>
+    
+    <header>
+        <div class="gaming-setup">
+            <div class="peripheral">
+                <div class="mouse-icon"></div>
+                <div class="peripheral-label">Gaming Mouse</div>
+            </div>
+            <div class="peripheral">
+                <div class="keyboard-icon"></div>
+                <div class="peripheral-label">Mechanical KB</div>
+            </div>
+        </div>
+        <div class="logo">DEMARK JADE T. ROGA</div>
+        <div class="tagline">Full-Stack Developer • Pro Gamer • Code Warrior</div>
+        <nav>
+            <button class="nav-btn" onclick="scrollToSection('about')">About</button>
+            <button class="nav-btn" onclick="scrollToSection('skills')">Skills</button>
+            <button class="nav-btn" onclick="scrollToSection('projects')">Projects</button>
+            <button class="nav-btn" onclick="scrollToSection('gaming')">Gaming</button>
+        </nav>
+    </header>
+
+    <main>
+        <div id="about" class="page active">
+            <div class="section">
+                <h2>About Me</h2>
+                <p style="font-family: 'Exo 2', sans-serif; font-size: 1.1rem; font-weight: 400; line-height: 1.6; opacity: 0.9;">
+                    Welcome to my digital realm! I'm a passionate full-stack developer by day and a competitive gamer by night. 
+                    With 5+ years of coding experience and countless hours perfecting my gaming skills, I bring the same precision 
+                    and strategic thinking from gaming into my development work. I specialize in creating immersive web experiences 
+                    and have a particular love for game development and interactive applications.
+                </p>
+                <div style="margin-top: 2rem;">
+                    <h3 style="font-family: 'Orbitron', monospace; font-weight: 600; letter-spacing: 0.05rem; color: #ff0080; margin-bottom: 1rem;">My Journey</h3>
+                    <p style="font-family: 'Exo 2', sans-serif; font-weight: 400; opacity: 0.8; line-height: 1.6;">
+                        Started coding at 16, fell in love with competitive gaming at 18. Now I combine both passions to create 
+                        cutting-edge digital experiences. When I'm not coding, you'll find me climbing the ranked ladders or 
+                        streaming my gameplay to help others improve.
+                    </p>
+                </div>
+                <div class="contact-buttons" style="margin-top: 3rem;">
+                    <button class="contact-btn" onclick="openContact('email')">📧 Email Me</button>
+                    <button class="contact-btn" onclick="openContact('github')">💻 GitHub</button>
+                    <button class="contact-btn" onclick="openContact('discord')">🎮 Discord</button>
+                </div>
+            </div>
+            <div class="gaming-footer">
+                <div class="rgb-bars">
+                    <div class="rgb-bar"></div>
+                    <div class="rgb-bar"></div>
+                    <div class="rgb-bar"></div>
+                    <div class="rgb-bar"></div>
+                    <div class="rgb-bar"></div>
+                </div>
+                <div class="gaming-elements">
+                    <div class="power-indicator">
+                        <div class="power-dot"></div>
+                        <span>ONLINE</span>
+                    </div>
+                    <div class="fps-counter">144 FPS</div>
+                    <div class="ping-display">12ms</div>
+                </div>
+            </div>
+        </div>
+
+        <div id="skills" class="page">
+            <div class="section">
+                <h2>Technical Arsenal</h2>
+                <div class="skills-grid">
+                    <div class="skill-card">
+                        <h3 style="font-family: 'Orbitron', monospace; font-weight: 600; letter-spacing: 0.05rem; color: #ff0080; margin-bottom: 1rem;">Frontend</h3>
+                        <p style="font-family: 'Exo 2', sans-serif; font-weight: 400;">React, Vue.js, TypeScript, HTML5, CSS3, Three.js</p>
+                    </div>
+                    <div class="skill-card">
+                        <h3 style="font-family: 'Orbitron', monospace; font-weight: 600; letter-spacing: 0.05rem; color: #00ff80; margin-bottom: 1rem;">Backend</h3>
+                        <p style="font-family: 'Exo 2', sans-serif; font-weight: 400;">Node.js, Python, Express, Django, PostgreSQL, MongoDB</p>
+                    </div>
+                    <div class="skill-card">
+                        <h3 style="font-family: 'Orbitron', monospace; font-weight: 600; letter-spacing: 0.05rem; color: #8000ff; margin-bottom: 1rem;">Game Dev</h3>
+                        <p style="font-family: 'Exo 2', sans-serif; font-weight: 400;">Unity, C#, Unreal Engine, WebGL, Game Physics</p>
+                    </div>
+                    <div class="skill-card">
+                        <h3 style="font-family: 'Orbitron', monospace; font-weight: 600; letter-spacing: 0.05rem; color: #ff8000; margin-bottom: 1rem;">Tools</h3>
+                        <p style="font-family: 'Exo 2', sans-serif; font-weight: 400;">Git, Docker, AWS, Firebase, Figma, Blender</p>
+                    </div>
+                </div>
+            </div>
+            <div class="gaming-footer">
+                <div class="rgb-bars">
+                    <div class="rgb-bar"></div>
+                    <div class="rgb-bar"></div>
+                    <div class="rgb-bar"></div>
+                    <div class="rgb-bar"></div>
+                    <div class="rgb-bar"></div>
+                </div>
+                <div class="gaming-elements">
+                    <div class="power-indicator">
+                        <div class="power-dot"></div>
+                        <span>CODING</span>
+                    </div>
+                    <div class="fps-counter">∞ WPM</div>
+                    <div class="ping-display">0ms</div>
+                </div>
+            </div>
+        </div>
+
+        <div id="projects" class="page">
+            <div class="section">
+                <h2>Epic Projects</h2>
+                <div class="project-grid">
+                    <div class="project-card">
+                        <h3 style="font-family: 'Orbitron', monospace; font-weight: 600; letter-spacing: 0.05rem; color: #ff0080; margin-bottom: 1rem;">🎮 Multiplayer Battle Arena</h3>
+                        <p style="font-family: 'Exo 2', sans-serif; font-weight: 400; line-height: 1.6;">Real-time multiplayer game built with WebSocket, Three.js, and Node.js. Features custom physics engine and matchmaking system.</p>
+                    </div>
+                    <div class="project-card">
+                        <h3 style="font-family: 'Orbitron', monospace; font-weight: 600; letter-spacing: 0.05rem; color: #00ff80; margin-bottom: 1rem;">🚀 Gaming Community Platform</h3>
+                        <p style="font-family: 'Exo 2', sans-serif; font-weight: 400; line-height: 1.6;">Full-stack social platform for gamers with tournament brackets, live streaming integration, and team management tools.</p>
+                    </div>
+                    <div class="project-card">
+                        <h3 style="font-family: 'Orbitron', monospace; font-weight: 600; letter-spacing: 0.05rem; color: #8000ff; margin-bottom: 1rem;">⚡ Performance Analytics Dashboard</h3>
+                        <p style="font-family: 'Exo 2', sans-serif; font-weight: 400; line-height: 1.6;">React-based dashboard for tracking gaming performance metrics with real-time data visualization and AI-powered insights.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="gaming-footer">
+                <div class="rgb-bars">
+                    <div class="rgb-bar"></div>
+                    <div class="rgb-bar"></div>
+                    <div class="rgb-bar"></div>
+                    <div class="rgb-bar"></div>
+                    <div class="rgb-bar"></div>
+                </div>
+                <div class="gaming-elements">
+                    <div class="power-indicator">
+                        <div class="power-dot"></div>
+                        <span>BUILDING</span>
+                    </div>
+                    <div class="fps-counter">100%</div>
+                    <div class="ping-display">LIVE</div>
+                </div>
+            </div>
+        </div>
+
+        <div id="gaming" class="page">
+            <div class="section">
+                <h2>Gaming Stats</h2>
+                <div class="stats-container">
+                    <div class="stat-box">
+                        <div class="stat-number">2,847</div>
+                        <div>Hours Played</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-number">Diamond</div>
+                        <div>Highest Rank</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-number">15</div>
+                        <div>Tournaments Won</div>
+                    </div>
+                </div>
+                <div style="margin-top: 3rem;">
+                    <h3 style="font-family: 'Orbitron', monospace; font-weight: 600; letter-spacing: 0.05rem; color: #00ff80; margin-bottom: 1rem;">Favorite Games</h3>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+                        <div style="padding: 1rem; background: rgba(255, 0, 128, 0.1); border-radius: 10px; text-align: center;">
+                            <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">🎯</div>
+                            <div style="font-family: 'Rajdhani', sans-serif; font-weight: 500; letter-spacing: 0.05rem;">Valorant</div>
+                        </div>
+                        <div style="padding: 1rem; background: rgba(0, 255, 128, 0.1); border-radius: 10px; text-align: center;">
+                            <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">⚔️</div>
+                            <div style="font-family: 'Rajdhani', sans-serif; font-weight: 500; letter-spacing: 0.05rem;">League of Legends</div>
+                        </div>
+                        <div style="padding: 1rem; background: rgba(128, 0, 255, 0.1); border-radius: 10px; text-align: center;">
+                            <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">🚗</div>
+                            <div style="font-family: 'Rajdhani', sans-serif; font-weight: 500; letter-spacing: 0.05rem;">Rocket League</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="gaming-footer">
+                <div class="rgb-bars">
+                    <div class="rgb-bar"></div>
+                    <div class="rgb-bar"></div>
+                    <div class="rgb-bar"></div>
+                    <div class="rgb-bar"></div>
+                    <div class="rgb-bar"></div>
+                </div>
+                <div class="gaming-elements">
+                    <div class="power-indicator">
+                        <div class="power-dot"></div>
+                        <span>GAMING</span>
+                    </div>
+                    <div class="fps-counter">240 FPS</div>
+                    <div class="ping-display">5ms</div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Custom cursor functionality
+        const cursor = document.querySelector('.cursor');
+        const trails = [];
+        
+        // Create cursor trails
+        for (let i = 0; i < 5; i++) {
+            const trail = document.createElement('div');
+            trail.className = 'cursor-trail';
+            document.body.appendChild(trail);
+            trails.push(trail);
+        }
+
+        let mouseX = 0, mouseY = 0;
+        let trailX = [], trailY = [];
+        
+        for (let i = 0; i < trails.length; i++) {
+            trailX[i] = 0;
+            trailY[i] = 0;
+        }
+
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+        });
+
+        function animateCursor() {
+            cursor.style.left = mouseX + 'px';
+            cursor.style.top = mouseY + 'px';
+            
+            // Animate trails
+            for (let i = 0; i < trails.length; i++) {
+                trailX[i] += (mouseX - trailX[i]) * (0.3 - i * 0.05);
+                trailY[i] += (mouseY - trailY[i]) * (0.3 - i * 0.05);
+                
+                trails[i].style.left = trailX[i] + 'px';
+                trails[i].style.top = trailY[i] + 'px';
+                trails[i].style.opacity = 1 - (i * 0.2);
+            }
+            
+            requestAnimationFrame(animateCursor);
+        }
+        animateCursor();
+
+        // Page switching with enhanced animations
+        let currentPage = 'about';
+        let isTransitioning = false;
+
+        function scrollToSection(sectionId) {
+            if (isTransitioning || sectionId === currentPage) return;
+            
+            isTransitioning = true;
+            
+            // Add exit animation to current page
+            const currentPageElement = document.getElementById(currentPage);
+            currentPageElement.classList.add('exiting');
+            currentPageElement.classList.remove('active');
+            
+            // Create particle effect
+            createPageTransitionParticles();
+            
+            // Add screen flash effect
+            createScreenFlash();
+            
+            // Switch to new page after exit animation
+            setTimeout(() => {
+                // Hide all pages
+                document.querySelectorAll('.page').forEach(page => {
+                    page.classList.remove('active', 'exiting');
+                });
+                
+                // Show selected page
+                const newPage = document.getElementById(sectionId);
+                newPage.classList.add('active');
+                
+                currentPage = sectionId;
+                
+                // Reset transition flag after animation completes
+                setTimeout(() => {
+                    isTransitioning = false;
+                }, 800);
+                
+            }, 400);
+            
+            // Update active nav button with enhanced effects
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                btn.style.transform = 'scale(1)';
+                btn.style.boxShadow = btn.style.boxShadow.replace('0 8px 25px', '0 4px 15px');
+                btn.style.filter = 'brightness(1)';
+            });
+            
+            // Highlight active button with pulse effect
+            event.target.style.transform = 'scale(1.15)';
+            event.target.style.boxShadow = '0 12px 35px rgba(255, 255, 255, 0.5)';
+            event.target.style.filter = 'brightness(1.3)';
+            
+            // Add button pulse animation
+            event.target.style.animation = 'buttonPulse 0.6s ease-out';
+            setTimeout(() => {
+                event.target.style.animation = '';
+            }, 600);
+        }
+
+        // Create particle effect for page transitions
+        function createPageTransitionParticles() {
+            for (let i = 0; i < 20; i++) {
+                const particle = document.createElement('div');
+                particle.style.cssText = `
+                    position: fixed;
+                    width: 4px;
+                    height: 4px;
+                    background: linear-gradient(45deg, #ff0080, #00ff80, #8000ff);
+                    border-radius: 50%;
+                    pointer-events: none;
+                    z-index: 10000;
+                    left: ${Math.random() * window.innerWidth}px;
+                    top: ${Math.random() * window.innerHeight}px;
+                    animation: particleFloat 1s ease-out forwards;
+                `;
+                document.body.appendChild(particle);
+                
+                setTimeout(() => particle.remove(), 1000);
+            }
+        }
+
+        // Create screen flash effect
+        function createScreenFlash() {
+            const flash = document.createElement('div');
+            flash.style.cssText = `
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100vw;
+                height: 100vh;
+                background: linear-gradient(45deg, rgba(255, 0, 128, 0.1), rgba(0, 255, 128, 0.1));
+                pointer-events: none;
+                z-index: 9999;
+                animation: screenFlash 0.5s ease-out;
+            `;
+            document.body.appendChild(flash);
+            
+            setTimeout(() => flash.remove(), 500);
+        }
+
+        // Contact functions
+        function openContact(type) {
+            const messages = {
+                email: 'Opening email client...',
+                github: 'Redirecting to GitHub profile...',
+                discord: 'Opening Discord...'
+            };
+            
+            // Create notification
+            const notification = document.createElement('div');
+            notification.textContent = messages[type];
+            notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: linear-gradient(45deg, #ff0080, #00ff80);
+                color: white;
+                padding: 15px 25px;
+                border-radius: 25px;
+                font-weight: bold;
+                z-index: 10000;
+                animation: slideIn 0.5s ease;
+            `;
+            
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.remove();
+            }, 3000);
+        }
+
+        // Add hover effects to cursor
+        document.querySelectorAll('button, .skill-card, .project-card').forEach(element => {
+            element.addEventListener('mouseenter', () => {
+                cursor.style.transform = 'scale(2)';
+            });
+            
+            element.addEventListener('mouseleave', () => {
+                cursor.style.transform = 'scale(1)';
+            });
+        });
+
+        // Add enhanced animations
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes slideIn {
+                from { transform: translateX(100%); opacity: 0; }
+                to { transform: translateX(0); opacity: 1; }
+            }
+            
+            @keyframes buttonPulse {
+                0% { transform: scale(1.15); }
+                50% { transform: scale(1.25); box-shadow: 0 15px 40px rgba(255, 255, 255, 0.6); }
+                100% { transform: scale(1.15); }
+            }
+            
+            @keyframes particleFloat {
+                0% {
+                    opacity: 1;
+                    transform: translateY(0) rotate(0deg) scale(1);
+                }
+                50% {
+                    opacity: 0.8;
+                    transform: translateY(-50px) rotate(180deg) scale(1.2);
+                }
+                100% {
+                    opacity: 0;
+                    transform: translateY(-100px) rotate(360deg) scale(0);
+                }
+            }
+            
+            @keyframes screenFlash {
+                0% { opacity: 0; }
+                50% { opacity: 0.3; }
+                100% { opacity: 0; }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'97fe5222248fbc4f',t:'MTc1ODAwNDI4Ni4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
